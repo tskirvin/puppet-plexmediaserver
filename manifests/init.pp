@@ -16,10 +16,7 @@ class plexmediaserver (
 ) {
   apt::source { 'plexmediaserver': location => $repo }
 
-  apt::key { 'ninthgate-se':
-    key        => '72740199',
-    key_source => 'pgp.mit.edu'
-  }
+  apt::key { 'ninthgate-se': id => '50EE969049C1996AD773A391E639BFCB72740199' }
 
   package { 'plexmediaserver':
     ensure  => installed,
