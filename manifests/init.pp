@@ -4,7 +4,7 @@
 #
 # == Parameters
 #
-#  repo       Defaults to http://shell.ninthgate.se/packages/debian
+#  repo       Defaults to https://downloads.plex.tv/repo/deb/
 #  version    Defaults to $lsbdistcodename
 #
 # == Requirements
@@ -12,11 +12,12 @@
 #   apt       https://forge.puppetlabs.com/puppetlabs/apt
 #
 class plexmediaserver (
-  $repo    = 'http://shell.ninthgate.se/packages/debian'
+  $repo = 'https://downloads.plex.tv/repo/deb/',
+  $key  = '675E23EE61EE92348890FC5043525C28E533491A'
 ) {
   apt::source { 'plexmediaserver': location => $repo }
 
-  apt::key { 'ninthgate-se': id => '50EE969049C1996AD773A391E639BFCB72740199' }
+  apt::key { 'ninthgate-se': id => $key }
 
   package { 'plexmediaserver':
     ensure  => installed,
